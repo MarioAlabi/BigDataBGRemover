@@ -21,15 +21,26 @@ Removedor de fondos para Linux **100% local, gratuito, sin límites de resoluci�
 
 ## 🚀 Instalación y uso
 
-### Opción 1: AppImage (recomendado)
-1. Descarga `BigDataBGRemover-x86_64.AppImage` (o compílalo con el script incluido).
+### Opción 1: Descargar compilado (AppImage o Flatpak)
+
+Ambos binarios precompilados están disponibles directamente en la carpeta [`dist/`](dist/):
+
+#### AppImage (compatible con Gear Lever)
+1. Descarga [`dist/BigDataBGRemover-x86_64.AppImage`](dist/BigDataBGRemover-x86_64.AppImage).
 2. Dale permisos de ejecución o intégralo directamente con **Gear Lever**:
    ```bash
    chmod +x BigDataBGRemover-x86_64.AppImage
    ./BigDataBGRemover-x86_64.AppImage
    ```
-3. **Primera ejecución:** la app te pedirá descargar el modelo `birefnet-general.onnx` (con barra de progreso) a `~/.local/share/bigdata-bg-remover/models/`. También puedes elegir un archivo `.onnx` que ya tengas guardado.
-4. Si usas la **2ª pasada con IA** (*Incluir/Quitar con IA*), la app descargará automáticamente **MobileSAM (~40 MB)** la primera vez.
+
+#### Flatpak (`.flatpak` bundle)
+1. Descarga [`dist/BigDataBGRemover-x86_64.flatpak`](dist/BigDataBGRemover-x86_64.flatpak).
+2. Instálalo con doble clic (Discover / GNOME Software) o desde la terminal:
+   ```bash
+   flatpak install --user BigDataBGRemover-x86_64.flatpak
+   ```
+
+> **Primera ejecución:** la app te pedirá descargar el modelo `birefnet-general.onnx` (con barra de progreso) a `~/.local/share/bigdata-bg-remover/models/`. También puedes elegir un archivo `.onnx` que ya tengas guardado. Si usas la **2ª pasada con IA** (*Incluir/Quitar con IA*), la app descargará automáticamente **MobileSAM (~40 MB)** la primera vez.
 
 ### Opción 2: Compilar desde el código fuente
 Requisitos: Rust (`cargo`) y herramientas estándar de compilación (`cmake`, `g++`, `pkg-config`).

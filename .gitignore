@@ -1,4 +1,7 @@
 /target/
 /AppDir/
-*.AppImage
+/flatpak-build/
+/flatpak-repo/
+/*.AppImage
+/*.flatpak
 *.part
