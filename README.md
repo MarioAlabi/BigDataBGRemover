@@ -41,7 +41,8 @@ Ambos binarios precompilados están disponibles directamente en la carpeta [`rel
    ```
 
 #### Windows (`.exe` — ⚠️ **no probado en Windows todavía**)
-El código es compatible con Windows y el ejecutable se compila automáticamente en **GitHub Actions** (pestaña **Actions → Build Windows EXE → Artifacts** -> `BigDataBGRemover-windows-x86_64.zip`).
+1. Descarga [`releases/BigDataBGRemover-windows-x86_64.zip`](releases/BigDataBGRemover-windows-x86_64.zip) (compilado automáticamente por GitHub Actions).
+2. Descomprímelo y ejecuta `BigDataBGRemover.exe`.
 > **Nota:** esta versión para Windows aún no ha sido probada en un equipo Windows real.
 
 > **Primera ejecución:** la app te pedirá descargar el modelo `birefnet-general.onnx` (con barra de progreso) a `~/.local/share/bigdata-bg-remover/models/`. También puedes elegir un archivo `.onnx` que ya tengas guardado. Si usas la **2ª pasada con IA** (*Incluir/Quitar con IA*), la app descargará automáticamente **MobileSAM (~40 MB)** la primera vez.

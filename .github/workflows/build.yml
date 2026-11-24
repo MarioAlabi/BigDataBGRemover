@@ -3,7 +3,13 @@ name: Build Windows EXE
 on:
   push:
     branches: [ master, main ]
+    paths-ignore:
+      - 'releases/**'
+      - 'README.md'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build-windows:
@@ -13,7 +19,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: Build release exe
         run: cargo build --release
-      - name: Package zip
+      - name: Package into releases/
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path win-dist
@@ -21,8 +27,20 @@ jobs:
           if (Test-Path target/release/*.dll) {
             Copy-Item target/release/*.dll win-dist/
           }
-          Compress-Archive -Path win-dist/* -DestinationPath BigDataBGRemover-windows-x86_64.zip
+          New-Item -ItemType Directory -Force -Path releases
+          Compress-Archive -Force -Path win-dist/* -DestinationPath releases/BigDataBGRemover-windows-x86_64.zip
+      - name: Commit Windows build to releases/
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git add releases/BigDataBGRemover-windows-x86_64.zip
+          if ! git diff --cached --quiet; then
+            git commit -m "Release: update Windows x86_64 build [skip ci]"
+            git push
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: BigDataBGRemover-windows-x86_64
-          path: BigDataBGRemover-windows-x86_64.zip
+          path: releases/BigDataBGRemover-windows-x86_64.zip
