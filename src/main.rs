@@ -1,3 +1,5 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
 mod editor;
 mod model;
 mod sam;
@@ -1000,15 +1002,19 @@ fn main() -> eframe::Result<()> {
 
     // `winit` 0.30 only implements file drag-and-drop on X11, not Wayland.
     // Removing `WAYLAND_DISPLAY` when `DISPLAY` (XWayland) is present forces X11 backend.
+    #[cfg(target_os = "linux")]
     if std::env::var_os("WAYLAND_DISPLAY").is_some() && std::env::var_os("DISPLAY").is_some() {
         unsafe { std::env::remove_var("WAYLAND_DISPLAY") };
     }
 
-    let rt = tokio::runtime::Builder::new_multi_thread()
-        .enable_all()
-        .build()
-        .expect("No se pudo iniciar el runtime de Tokio");
-    let _rt_guard = rt.enter();
+    #[cfg(target_os = "linux")]
+    let _rt_guard = {
+        let rt = tokio::runtime::Builder::new_multi_thread()
+            .enable_all()
+            .build()
+            .expect("No se pudo iniciar el runtime de Tokio");
+        Box::leak(Box::new(rt)).enter()
+    };
 
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
