@@ -3,11 +3,12 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_DIR="$ROOT_DIR/AppDir"
-OUT_IMAGE="$ROOT_DIR/BigDataBGRemover-x86_64.AppImage"
+OUT_IMAGE="$ROOT_DIR/releases/BigDataBGRemover-x86_64.AppImage"
 TOOL="${APPIMAGETOOL:-/tmp/appimagetool-x86_64.AppImage}"
 
 cd "$ROOT_DIR"
 cargo build --release
+mkdir -p "$ROOT_DIR/releases"
 
 rm -rf "$APP_DIR"
 mkdir -p "$APP_DIR/usr/bin"

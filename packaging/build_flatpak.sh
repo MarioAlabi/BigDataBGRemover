@@ -6,11 +6,11 @@ APP_ID="io.github.marioalabi.BigDataBGRemover"
 RUNTIME_VER="25.08"
 BUILD_DIR="$ROOT_DIR/flatpak-build"
 REPO_DIR="$ROOT_DIR/flatpak-repo"
-OUT_BUNDLE="$ROOT_DIR/dist/BigDataBGRemover-x86_64.flatpak"
+OUT_BUNDLE="$ROOT_DIR/releases/BigDataBGRemover-x86_64.flatpak"
 
 cd "$ROOT_DIR"
 cargo build --release
-mkdir -p "$ROOT_DIR/dist"
+mkdir -p "$ROOT_DIR/releases"
 
 rm -rf "$BUILD_DIR" "$REPO_DIR"
 flatpak build-init "$BUILD_DIR" "$APP_ID" org.freedesktop.Sdk org.freedesktop.Platform "$RUNTIME_VER"

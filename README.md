@@ -23,10 +23,10 @@ Removedor de fondos para Linux **100% local, gratuito, sin límites de resoluci�
 
 ### Opción 1: Descargar compilado (AppImage o Flatpak)
 
-Ambos binarios precompilados están disponibles directamente en la carpeta [`dist/`](dist/):
+Ambos binarios precompilados están disponibles directamente en la carpeta [`releases/`](releases/):
 
 #### AppImage (compatible con Gear Lever)
-1. Descarga [`dist/BigDataBGRemover-x86_64.AppImage`](dist/BigDataBGRemover-x86_64.AppImage).
+1. Descarga [`releases/BigDataBGRemover-x86_64.AppImage`](releases/BigDataBGRemover-x86_64.AppImage).
 2. Dale permisos de ejecución o intégralo directamente con **Gear Lever**:
    ```bash
    chmod +x BigDataBGRemover-x86_64.AppImage
@@ -34,7 +34,7 @@ Ambos binarios precompilados están disponibles directamente en la carpeta [`dis
    ```
 
 #### Flatpak (`.flatpak` bundle)
-1. Descarga [`dist/BigDataBGRemover-x86_64.flatpak`](dist/BigDataBGRemover-x86_64.flatpak).
+1. Descarga [`releases/BigDataBGRemover-x86_64.flatpak`](releases/BigDataBGRemover-x86_64.flatpak).
 2. Instálalo con doble clic (Discover / GNOME Software) o desde la terminal:
    ```bash
    flatpak install --user BigDataBGRemover-x86_64.flatpak
