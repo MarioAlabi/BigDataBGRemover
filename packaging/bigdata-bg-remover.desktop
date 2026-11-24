@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=BigDataBGRemover
+Comment=Removedor de fondos local con IA (BiRefNet + MobileSAM)
+Exec=bigdata-bg-remover
+Icon=bigdata-bg-remover
+Categories=Graphics;Utility;
+Terminal=false
+StartupWMClass=BigDataBGRemover
